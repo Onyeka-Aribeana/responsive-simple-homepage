@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/main.css" />
+    <script src="./script.js" defer></script>
+    <title>Responsive Simple Homepage</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <object
+          class="header__logo"
+          type="image/svg+xml"
+          data="./assets/alarado-icon-homepage.svg"
+        ></object>
+        <input type="checkbox" class="nav__btn-checkbox" id="nav__menu" />
+        <label class="nav__btn" for="nav__menu">
+          <span class="nav__btn-icon">&nbsp;</span>
+        </label>
+        <nav class="header__nav nav">
+          <ul class="nav__list">
+            <li class="nav__list-item">
+              <a href="#" class="nav__link selected">About us</a>
+            </li>
+            <li class="nav__list-item">
+              <a href="#" class="nav__link">Product</a>
+            </li>
+            <li class="nav__list-item">
+              <a href="#" class="nav__link">Resource</a>
+            </li>
+            <li class="nav__list-item">
+              <a href="#" class="nav__link">Contact</a>
+            </li>
+          </ul>
+          <input type="checkbox" class="nav__theme-checkbox" id="nav__theme" />
+          <label class="nav__theme-toggle" for="nav__theme">
+            <span class="nav__theme-toggle-switch"></span>
+            <object
+              class="nav__theme-moon"
+              type="image/svg+xml"
+              data="./assets/Moon_fill.svg"
+            ></object>
+            <object
+              class="nav__theme-sun"
+              type="image/svg+xml"
+              data="./assets/Sun_fill.svg"
+            ></object>
+          </label>
+        </nav>
+      </header>
+      <section class="section-hero">
+        <div class="hero">
+          <div class="hero__img-box">
+            <img
+              src="./assets/hero-image-simple-homepage.png"
+              alt=""
+              class="hero__img"
+              aria-hidden="true"
+            />
+          </div>
+          <div class="hero__text-box">
+            <span class="heading heading--sub"
+              >😎 Simple way to communicate</span
+            >
+            <h1 class="heading heading--primary">
+              Actions for Accessibility in Design
+            </h1>
+            <p class="hero__description">
+              The fastest way to build and deploy websites with resusable
+              components.
+            </p>
+            <a href="#" class="btn btn--full margin-right-sm">Get started</a>
+            <a href="#" class="btn btn--outline">Get live demo</a>
+            <ul class="feature__list">
+              <li class="feature__list-item">No credit card required</li>
+              <li class="feature__list-item">No software to install</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </div>
+  </body>
+</html>

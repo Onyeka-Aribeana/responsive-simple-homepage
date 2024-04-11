@@ -1,0 +1,377 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+$color-blue: #2a4dd0;
+$color-green: #4ca154;
+$color-dark: #111729;
+$color-grey-1: #223344;
+$color-grey-2: #909193;
+$color-light: #f2f9fe;
+$color-white: #ffffff;
+
+:root {
+  --color-background: #{$color-light};
+  --color-text: #{$color-dark};
+}
+
+.margin-right-sm {
+  margin-right: 2.4rem;
+}
+
+@mixin respond($bp) {
+  @if $bp == tablet {
+    @media only screen and (max-width: 46em) {
+      @content;
+    }
+  }
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+html {
+  font-size: clamp(50%, 1vw, 62.5%);
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: "Poppins", sans-serif;
+  color: var(--color-text);
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 2.4rem 7.2rem;
+
+  @include respond(tablet) {
+    padding: 2.4rem 3.6rem;
+  }
+}
+
+body.dark {
+  --color-background: #{$color-dark};
+  --color-text: #{$color-light};
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4.8rem;
+  position: relative;
+}
+
+.nav {
+  flex-basis: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+
+  @include respond(tablet) {
+    background-color: var(--color-background);
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 45rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 7.2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 3.2rem;
+    transform: translateX(100%);
+    text-align: center;
+
+    &__btn-checkbox:checked ~ & {
+      transform: translateX(0);
+    }
+  }
+
+  &__list {
+    list-style: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+
+    @include respond(tablet) {
+      font-size: 4.8rem;
+      display: flex;
+      flex-direction: column;
+      gap: 3.2rem;
+    }
+
+    &-item {
+      display: inline-block;
+
+      &:not(:last-child) {
+        margin-right: 3.2rem;
+
+        @include respond(tablet) {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+
+  &__link:link,
+  &__link:visited {
+    text-decoration: none;
+    color: $color-grey-2;
+    transition: all 0.2s;
+  }
+
+  &__link:hover,
+  &__link:active,
+  &__link.selected {
+    color: inherit;
+  }
+
+  &__btn {
+    z-index: 10;
+    cursor: pointer;
+    display: none;
+
+    @include respond(tablet) {
+      display: flex;
+      align-items: center;
+    }
+
+    &-checkbox {
+      display: none;
+    }
+
+    &-icon {
+      position: relative;
+
+      &,
+      &::after,
+      &::before {
+        display: inline-block;
+        width: 2.7rem;
+        height: 3px;
+        background-color: currentColor;
+        border-radius: 99em;
+        transition: all 0.2s;
+      }
+
+      &::after,
+      &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+      }
+
+      &::after {
+        top: 0.8rem;
+      }
+
+      &::before {
+        top: -0.8rem;
+      }
+    }
+
+    &-checkbox:checked + & &-icon {
+      background-color: transparent;
+      position: fixed;
+      right: 3.6rem;
+      top: 3.6rem;
+    }
+
+    &-checkbox:checked + & &-icon::before {
+      top: 0;
+      transform: rotate(135deg);
+    }
+
+    &-checkbox:checked + & &-icon::after {
+      top: 0;
+      transform: rotate(-135deg);
+    }
+  }
+
+  &__theme {
+    &-checkbox {
+      display: none;
+    }
+
+    &-checkbox:checked + &-toggle &-toggle-switch {
+      transform: translateX(-24px);
+    }
+
+    &-toggle {
+      display: inline-block;
+      position: relative;
+      width: 48px;
+      height: 24px;
+      background-color: $color-grey-1;
+      border-radius: 99em;
+      cursor: pointer;
+      z-index: 100;
+
+      &-switch {
+        display: inline-block;
+        height: 20px;
+        width: 20px;
+        position: absolute;
+        border-radius: 50%;
+        background-color: $color-white;
+        top: 2px;
+        right: 2px;
+        transition: all 0.2s;
+      }
+    }
+
+    &-moon,
+    &-sun {
+      position: absolute;
+      top: 2px;
+      display: inline-block;
+      z-index: 10;
+      height: 20px;
+      width: 20px;
+      transition: all 0.2s;
+      pointer-events: none;
+    }
+
+    &-sun {
+      right: 2px;
+    }
+
+    &-moon {
+      left: 2px;
+    }
+  }
+}
+
+.heading {
+  &--sub {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  &--primary {
+    font-size: 6rem;
+    margin: 2.4rem 0;
+    font-weight: 700;
+
+    @include respond(tablet) {
+      font-size: 4.4rem;
+    }
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 4.8rem;
+
+  @include respond(tablet) {
+    display: block;
+  }
+
+  &__description {
+    font-size: 1.8rem;
+    color: $color-grey-2;
+    font-weight: 500;
+    margin-bottom: 1.6rem;
+  }
+
+  & > * {
+    flex-basis: 32rem;
+  }
+
+  &__text-box {
+    flex-grow: 6;
+  }
+
+  &__img-box {
+    flex-grow: 11;
+
+    @include respond(tablet) {
+      margin-bottom: 6.4rem;
+    }
+  }
+
+  &__img {
+    vertical-align: middle;
+    width: 100%;
+  }
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  transition: all 0.3s;
+
+  &--full:link,
+  &--full:visited {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1.2rem 2.4rem;
+    background-color: $color-blue;
+    color: $color-white;
+    border-radius: 0.8rem;
+  }
+
+  &--full:focus {
+    box-shadow: 0 0 0 0.8rem rgba($color-blue, 0.5);
+  }
+
+  &--full:hover,
+  &--full:active {
+    background-color: darken($color-blue, 10%);
+  }
+
+  &--outline:link,
+  &--outline:visited {
+    color: $color-blue;
+  }
+
+  &--outline:hover,
+  &--outline:active {
+    text-decoration: none;
+  }
+}
+
+.feature {
+  &__list {
+    margin-top: 2.4rem;
+    list-style: none;
+    list-style-position: inside;
+    font-size: 1.4rem;
+    display: flex;
+    color: $color-grey-2;
+    font-weight: 500;
+
+    &-item {
+      display: grid;
+      grid-template-columns: min-content 1fr;
+
+      &:not(:last-child) {
+        margin-right: 2rem;
+      }
+
+      &::before {
+        content: "";
+        display: inline-block;
+        height: 2.1rem;
+        width: 2.1rem;
+        margin-right: 1rem;
+        background: url(../assets/Done_ring_round_fill.svg);
+        background-size: cover;
+        grid-row: 1 / span 2;
+        align-self: baseline;
+      }
+    }
+  }
+}

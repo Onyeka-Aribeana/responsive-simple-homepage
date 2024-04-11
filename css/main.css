@@ -1,0 +1,315 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+:root {
+  --color-background: #f2f9fe;
+  --color-text: #111729;
+}
+
+.margin-right-sm {
+  margin-right: 2.4rem;
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  font-size: clamp(50%, 1vw, 62.5%);
+  box-sizing: border-box;
+}
+
+body {
+  background-color: var(--color-background);
+  font-family: "Poppins", sans-serif;
+  color: var(--color-text);
+  font-weight: 400;
+  line-height: 1.5;
+  padding: 2.4rem 7.2rem;
+}
+@media only screen and (max-width: 46em) {
+  body {
+    padding: 2.4rem 3.6rem;
+  }
+}
+
+body.dark {
+  --color-background: #111729;
+  --color-text: #f2f9fe;
+}
+
+.container {
+  max-width: 120rem;
+  margin: 0 auto;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4.8rem;
+  position: relative;
+}
+
+.nav {
+  flex-basis: 65%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transition: all 0.3s;
+}
+@media only screen and (max-width: 46em) {
+  .nav {
+    background-color: var(--color-background);
+    z-index: 5;
+    position: fixed;
+    top: 0;
+    right: 0;
+    max-width: 45rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 7.2rem;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 3.2rem;
+    transform: translateX(100%);
+    text-align: center;
+  }
+  .nav__btn-checkbox:checked ~ .nav {
+    transform: translateX(0);
+  }
+}
+.nav__list {
+  list-style: none;
+  font-size: 1.4rem;
+  font-weight: 600;
+}
+@media only screen and (max-width: 46em) {
+  .nav__list {
+    font-size: 4.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 3.2rem;
+  }
+}
+.nav__list-item {
+  display: inline-block;
+}
+.nav__list-item:not(:last-child) {
+  margin-right: 3.2rem;
+}
+@media only screen and (max-width: 46em) {
+  .nav__list-item:not(:last-child) {
+    margin-right: 0;
+  }
+}
+.nav__link:link, .nav__link:visited {
+  text-decoration: none;
+  color: #909193;
+  transition: all 0.2s;
+}
+.nav__link:hover, .nav__link:active, .nav__link.selected {
+  color: inherit;
+}
+.nav__btn {
+  z-index: 10;
+  cursor: pointer;
+  display: none;
+}
+@media only screen and (max-width: 46em) {
+  .nav__btn {
+    display: flex;
+    align-items: center;
+  }
+}
+.nav__btn-checkbox {
+  display: none;
+}
+.nav__btn-icon {
+  position: relative;
+}
+.nav__btn-icon, .nav__btn-icon::after, .nav__btn-icon::before {
+  display: inline-block;
+  width: 2.7rem;
+  height: 3px;
+  background-color: currentColor;
+  border-radius: 99em;
+  transition: all 0.2s;
+}
+.nav__btn-icon::after, .nav__btn-icon::before {
+  content: "";
+  position: absolute;
+  left: 0;
+}
+.nav__btn-icon::after {
+  top: 0.8rem;
+}
+.nav__btn-icon::before {
+  top: -0.8rem;
+}
+.nav__btn-checkbox:checked + .nav__btn .nav__btn-icon {
+  background-color: transparent;
+  position: fixed;
+  right: 3.6rem;
+  top: 3.6rem;
+}
+.nav__btn-checkbox:checked + .nav__btn .nav__btn-icon::before {
+  top: 0;
+  transform: rotate(135deg);
+}
+.nav__btn-checkbox:checked + .nav__btn .nav__btn-icon::after {
+  top: 0;
+  transform: rotate(-135deg);
+}
+.nav__theme-checkbox {
+  display: none;
+}
+.nav__theme-checkbox:checked + .nav__theme-toggle .nav__theme-toggle-switch {
+  transform: translateX(-24px);
+}
+.nav__theme-toggle {
+  display: inline-block;
+  position: relative;
+  width: 48px;
+  height: 24px;
+  background-color: #223344;
+  border-radius: 99em;
+  cursor: pointer;
+  z-index: 100;
+}
+.nav__theme-toggle-switch {
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  border-radius: 50%;
+  background-color: #ffffff;
+  top: 2px;
+  right: 2px;
+  transition: all 0.2s;
+}
+.nav__theme-moon, .nav__theme-sun {
+  position: absolute;
+  top: 2px;
+  display: inline-block;
+  z-index: 10;
+  height: 20px;
+  width: 20px;
+  transition: all 0.2s;
+  pointer-events: none;
+}
+.nav__theme-sun {
+  right: 2px;
+}
+.nav__theme-moon {
+  left: 2px;
+}
+
+.heading--sub {
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  font-weight: 500;
+}
+.heading--primary {
+  font-size: 6rem;
+  margin: 2.4rem 0;
+  font-weight: 700;
+}
+@media only screen and (max-width: 46em) {
+  .heading--primary {
+    font-size: 4.4rem;
+  }
+}
+
+.hero {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 4.8rem;
+}
+@media only screen and (max-width: 46em) {
+  .hero {
+    display: block;
+  }
+}
+.hero__description {
+  font-size: 1.8rem;
+  color: #909193;
+  font-weight: 500;
+  margin-bottom: 1.6rem;
+}
+.hero > * {
+  flex-basis: 32rem;
+}
+.hero__text-box {
+  flex-grow: 6;
+}
+.hero__img-box {
+  flex-grow: 11;
+}
+@media only screen and (max-width: 46em) {
+  .hero__img-box {
+    margin-bottom: 6.4rem;
+  }
+}
+.hero__img {
+  vertical-align: middle;
+  width: 100%;
+}
+
+.btn {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+.btn--full:link, .btn--full:visited {
+  text-decoration: none;
+  text-transform: uppercase;
+  padding: 1.2rem 2.4rem;
+  background-color: #2a4dd0;
+  color: #ffffff;
+  border-radius: 0.8rem;
+}
+.btn--full:focus {
+  box-shadow: 0 0 0 0.8rem rgba(42, 77, 208, 0.5);
+}
+.btn--full:hover, .btn--full:active {
+  background-color: #213da6;
+}
+.btn--outline:link, .btn--outline:visited {
+  color: #2a4dd0;
+}
+.btn--outline:hover, .btn--outline:active {
+  text-decoration: none;
+}
+
+.feature__list {
+  margin-top: 2.4rem;
+  list-style: none;
+  list-style-position: inside;
+  font-size: 1.4rem;
+  display: flex;
+  color: #909193;
+  font-weight: 500;
+}
+.feature__list-item {
+  display: grid;
+  grid-template-columns: min-content 1fr;
+}
+.feature__list-item:not(:last-child) {
+  margin-right: 2rem;
+}
+.feature__list-item::before {
+  content: "";
+  display: inline-block;
+  height: 2.1rem;
+  width: 2.1rem;
+  margin-right: 1rem;
+  background: url(../assets/Done_ring_round_fill.svg);
+  background-size: cover;
+  grid-row: 1/span 2;
+  align-self: baseline;
+}/*# sourceMappingURL=main.css.map */
