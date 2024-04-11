@@ -7,13 +7,15 @@ const light = "#F2F9FE";
 const dark = "#223344";
 
 const changeFillColor = function (icon, from, to) {
-  const fills = icon.getSVGDocument()?.querySelectorAll(`[fill='${from}']`);
-  const strokes = icon.getSVGDocument()?.querySelectorAll(`[stroke='${from}']`);
+  const fills = icon.contentDocument.querySelectorAll(`[fill='${from}']`);
+  const strokes = icon.contentDocument.querySelectorAll(`[stroke='${from}']`);
 
-  [...fills].concat([...strokes]).forEach((element) => {
-    element.setAttribute("fill", to);
-    element.setAttribute("stroke", to);
-  });
+  Array.from(fills)
+    .concat(Array.from(strokes))
+    .forEach((element) => {
+      element.setAttribute("fill", to);
+      element.setAttribute("stroke", to);
+    });
 };
 
 changeFillColor(moon, dark, light);
