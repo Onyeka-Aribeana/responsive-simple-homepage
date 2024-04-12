@@ -40,11 +40,6 @@ body.dark {
   --color-text: #f2f9fe;
 }
 
-iframe {
-  border: none;
-  display: block;
-}
-
 .container {
   max-width: 120rem;
   margin: 0 auto;

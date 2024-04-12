@@ -56,11 +56,6 @@ body.dark {
   --color-text: #{$color-light};
 }
 
-iframe {
-  border: none;
-  display: block;
-}
-
 .container {
   max-width: 120rem;
   margin: 0 auto;
