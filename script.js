@@ -3,6 +3,7 @@ const sun = document.querySelector(".nav__theme-sun");
 const moon = document.querySelector(".nav__theme-moon");
 const themeCheckbox = document.querySelector(".nav__theme-checkbox");
 
+
 const light = "#F2F9FE";
 const dark = "#223344";
 

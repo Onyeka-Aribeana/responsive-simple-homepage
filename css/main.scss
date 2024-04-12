@@ -32,6 +32,7 @@ $color-white: #ffffff;
   padding: 0;
   box-sizing: inherit;
 }
+
 html {
   font-size: clamp(50%, 1vw, 62.5%);
   box-sizing: border-box;
@@ -53,6 +54,11 @@ body {
 body.dark {
   --color-background: #{$color-dark};
   --color-text: #{$color-light};
+}
+
+iframe {
+  border: none;
+  display: block;
 }
 
 .container {
